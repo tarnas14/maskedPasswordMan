@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Masked Password Man",
+  "description": "Helps inputting your password in masked inputs with hints",
+  "permissions": ["scripting", "activeTab"],
+  "version": "0.1",
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
