@@ -3,7 +3,7 @@ const PEKAO_INPUT_SELECTOR = 'pekao-masked-input-field input'
 function help(password) {
   removeAllHints()
 
-  hideHintsOnEnter();
+  hideHintsOnSubmit();
 
   password.split('').forEach((char, index) => {
     const field = document.querySelectorAll(PEKAO_INPUT_SELECTOR)[index]
@@ -61,15 +61,10 @@ function removeAllHints() {
   hints.forEach(hint => hint.remove())
 }
 
-function hideHintsOnEnter() {
-  const callback = e => {
-    if (e.key === 'Enter') {
-      removeAllHints()
-      window.removeEventListener(callback)
-    }
-  }
+function hideHintsOnSubmit() {
+  const form = document.querySelector('form')
 
-  window.addEventListener('keydown', callback)
+  form.addEventListener('submit', removeAllHints)
 }
 
 function showPassForm() {
@@ -107,4 +102,41 @@ function showPassForm() {
   document.body.appendChild(passForm)
 }
 
-showPassForm()
+const getElement = async selector => {
+  let watchdog = 10
+  let element = null
+
+  while(watchdog > 0) {
+    watchdog--
+
+    element = document.querySelector(selector)
+
+    if (!element) {
+      await new Promise(resolve => setTimeout(resolve, 300))
+    } else {
+      watchdog = 0
+    }
+  }
+
+  if (!element) {
+    throw new Error('not found')
+  }
+
+  return element
+}
+
+const letsGo = async () => {
+  try {
+    const form = await getElement('form')
+
+    form.addEventListener('submit', async () => {
+      await getElement('pekao-login-password')
+
+      showPassForm()
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+void letsGo()

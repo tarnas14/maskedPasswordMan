@@ -2,9 +2,11 @@
   "manifest_version": 3,
   "name": "Masked Password Man",
   "description": "Helps inputting your password in masked inputs with hints",
-  "permissions": ["scripting", "activeTab"],
+  "permissions": ["scripting"],
   "version": "0.1",
-  "action": {
-    "default_popup": "popup.html"
-  }
+  "content_scripts": [{
+    "run_at": "document_end",
+    "matches": ["https://www.pekao24.pl/logowanie", "https://pekao24.pl/logowanie", "https://pekao24.pl/*",  "https://www.pekao24.pl/*"],
+    "js": ["pekao24.js"]
+  }]
 }
