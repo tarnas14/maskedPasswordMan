@@ -10,11 +10,15 @@ This is a chrome extension that helps you type passwords in masked passwords inp
 
 ## TODO:
 
-- [ ] pekao24.pl
+- [x] pekao24.pl
     - [x] main loop
     - [x] auto-focus password input
     - [x] auto-focus first active input after password submit
-    - [ ] improve styling of password input
+    - [x] improve styling of password input
 - [ ] feedback to user that masked password man is watching
 - [ ] publish to chrome web store
 - ???
+
+## Attributions
+
+<a href="https://iconscout.com/icons/mask" target="_blank">Free Mask Icon</a> by <a href="https://iconscout.com/contributors/daniel-bruce" target="_blank">Daniel Bruce</a>
