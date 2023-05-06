@@ -1,4 +1,5 @@
 const PEKAO_INPUT_SELECTOR = 'pekao-masked-input-field input'
+const PEKAO_ACTIVE_INPUT_SELECTOR = 'pekao-masked-input-field input.field-active'
 
 function help(password) {
   removeAllHints()
@@ -91,6 +92,9 @@ function showPassForm() {
 
     passForm.remove()
     help(formData.get('password'))
+
+    const firstActiveInput = document.querySelector(PEKAO_ACTIVE_INPUT_SELECTOR)
+    firstActiveInput.focus()
   })
 
   const submitButton = document.createElement('button')
