@@ -100,6 +100,8 @@ function showPassForm() {
   passForm.appendChild(passInput)
   passForm.appendChild(submitButton)
   document.body.appendChild(passForm)
+
+  passInput.focus()
 }
 
 const getElement = async selector => {
