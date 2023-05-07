@@ -1,0 +1,26 @@
+{
+  "name": "masked-password-man",
+  "version": "0.0.1",
+  "description": "Helps inputting your password in masked inputs with hints",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && parcel build pekao24.js --no-source-maps && cp -r icons dist && cp manifest.json dist",
+    "pack-extension": "zip-build dist packed --format zip --template %NAME%_%VERSION%.%EXT%"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarnas14/maskedPasswordMan.git"
+  },
+  "author": "tarnas14",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tarnas14/maskedPasswordMan/issues"
+  },
+  "homepage": "https://github.com/tarnas14/maskedPasswordMan#readme",
+  "devDependencies": {
+    "@parcel/config-default": "^2.8.3",
+    "@parcel/optimizer-esbuild": "^2.8.3",
+    "parcel": "^2.8.3",
+    "zip-build": "^1.8.0"
+  }
+}
