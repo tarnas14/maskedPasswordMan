@@ -148,13 +148,17 @@ const getElement = async selector => {
 
 const letsGo = async () => {
   try {
-    const form = await getElement('form')
-
-    form.addEventListener('submit', async () => {
+    const prepareHints = async () => {
       await getElement('pekao-login-password')
 
       showPassForm()
-    })
+    }
+
+    const form = await getElement('form')
+    form.addEventListener('submit', prepareHints)
+
+    const nextButton = await getElement('.button-primary.next')
+    nextButton.addEventListener('click', prepareHints)
   } catch (e) {
     console.error(e)
   }

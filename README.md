@@ -15,9 +15,10 @@ This is a chrome extension that helps you type passwords in masked passwords inp
     - [x] auto-focus password input
     - [x] auto-focus first active input after password submit
     - [x] improve styling of password input
-    - [ ] handle 'Dalej' button correctly
+    - [x] handle 'Dalej' button correctly
+    - [ ] handle https://www.platnosci.pekao24.pl/e-zakupy/logowanie
 - [ ] feedback to user that masked password man is watching
-- [ ] setup pipeline to build an unpacked and packed version of the extension
+- [x] setup pipeline to build an unpacked and packed version of the extension
 - [ ] publish to chrome web store
 - ???
 
