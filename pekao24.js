@@ -140,7 +140,7 @@ const getElement = async selector => {
   }
 
   if (!element) {
-    throw new Error('not found')
+    throw new Error(`'${selector}' not found`)
   }
 
   return element
@@ -157,7 +157,7 @@ const letsGo = async () => {
     const form = await getElement('form')
     form.addEventListener('submit', prepareHints)
 
-    const nextButton = await getElement('.button-primary.next')
+    const nextButton = await getElement('.button-primary')
     nextButton.addEventListener('click', prepareHints)
   } catch (e) {
     console.error(e)

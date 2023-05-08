@@ -6,7 +6,7 @@
   "permissions": ["scripting"],
   "content_scripts": [{
     "run_at": "document_end",
-    "matches": ["https://www.pekao24.pl/logowanie", "https://pekao24.pl/logowanie", "https://pekao24.pl/*",  "https://www.pekao24.pl/*"],
+    "matches": ["https://www.pekao24.pl/logowanie", "https://pekao24.pl/logowanie", "https://www.platnosci.pekao24.pl/e-zakupy/logowanie", "https://platnosci.pekao24.pl/e-zakupy/logowanie"],
     "js": ["pekao24.js"]
   }],
   "icons": {
