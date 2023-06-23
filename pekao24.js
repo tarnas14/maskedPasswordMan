@@ -123,8 +123,10 @@ function showPassForm() {
   passInput.focus()
 }
 
-const getElement = async selector => {
-  let watchdog = 10
+const getElement = async (selector, options = {}) => {
+  const { waitTime = 3, force = false } = options
+  let cycleTime = 300
+  let watchdog = Math.floor(waitTime * 1000 / cycleTime)
   let element = null
 
   while(watchdog > 0) {
@@ -133,13 +135,13 @@ const getElement = async selector => {
     element = document.querySelector(selector)
 
     if (!element) {
-      await new Promise(resolve => setTimeout(resolve, 300))
+      await new Promise(resolve => setTimeout(resolve, cycleTime))
     } else {
       watchdog = 0
     }
   }
 
-  if (!element) {
+  if (force && !element) {
     throw new Error(`'${selector}' not found`)
   }
 
@@ -149,13 +151,17 @@ const getElement = async selector => {
 const letsGo = async () => {
   try {
     const prepareHints = async () => {
-      await getElement('pekao-login-password')
+      await getElement('pekao-login-password', {
+        force: false,
+        waitTime: 10
+      })
 
       showPassForm()
     }
 
-    const form = await getElement('form')
-    form.addEventListener('submit', prepareHints)
+    // this element is not present if the user trusted the browser
+    const form = await getElement('form', { force: false })
+    form?.addEventListener('submit', prepareHints)
 
     const nextButton = await getElement('.button-primary')
     nextButton.addEventListener('click', prepareHints)
