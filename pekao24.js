@@ -91,6 +91,7 @@ function showPassForm() {
   passForm.style.height = '30px'
   passForm.style.display = 'flex'
   passForm.style.columnGap = '4px'
+  passForm.style.zIndex = '9001'
 
   const maskedManIcon = document.createElement('img')
   maskedManIcon.src = MASKED_MAN_ICON
@@ -148,23 +149,24 @@ const getElement = async (selector, options = {}) => {
   return element
 }
 
+const ping = async () =>  {
+  while(true) {
+    console.log('masked man')
+    await new Promise(resolve => setTimeout(resolve, 1000))
+  }
+}
+
 const letsGo = async () => {
   try {
-    const prepareHints = async () => {
-      await getElement('pekao-login-password', {
-        force: false,
-        waitTime: 10
-      })
+    ping()
 
-      showPassForm()
-    }
-
-    // this element is not present if the user trusted the browser
-    const form = await getElement('form', { force: false })
-    form?.addEventListener('submit', prepareHints)
-
-    const nextButton = await getElement('.button-primary')
-    nextButton.addEventListener('click', prepareHints)
+    console.log('looking for masked field pass')
+    await getElement('pekao-masked-field-password', {
+      force: true,
+      waitTime: 10
+    })
+    console.log('found masked field password')
+    showPassForm()
   } catch (e) {
     console.error(e)
   }

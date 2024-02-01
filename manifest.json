@@ -12,7 +12,8 @@
       "https://www.pekao24.pl/logowanie",
       "https://pekao24.pl/logowanie",
       "https://www.platnosci.pekao24.pl/e-zakupy/logowanie",
-      "https://platnosci.pekao24.pl/e-zakupy/logowanie"
+      "https://platnosci.pekao24.pl/e-zakupy/logowanie",
+      "https://api.pekao24.pl/"
     ],
     "js": ["pekao24.js"]
   }],

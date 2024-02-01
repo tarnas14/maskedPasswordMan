@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && parcel build pekao24.js --no-source-maps && cp -r icons dist && cp manifest.json dist",
+    "build-watch": "nodemon -w pekao24.js -w manifest.json -x 'npm run build'",
     "pack-extension": "zip-build dist packed --format zip --template %NAME%_%VERSION%.%EXT%"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@parcel/config-default": "^2.8.3",
     "@parcel/optimizer-esbuild": "^2.8.3",
+    "nodemon": "^3.0.3",
     "parcel": "^2.8.3",
     "zip-build": "^1.8.0"
   }
