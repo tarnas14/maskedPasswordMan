@@ -161,11 +161,12 @@ const letsGo = async () => {
     ping()
 
     console.log('looking for masked field pass')
-    await getElement('pekao-masked-field-password', {
+    const passwordContainerElement = 'pekao-login-password'
+    await getElement(passwordContainerElement, {
       force: true,
       waitTime: 10
     })
-    console.log('found masked field password')
+    console.log('found masked password container')
     showPassForm()
   } catch (e) {
     console.error(e)
